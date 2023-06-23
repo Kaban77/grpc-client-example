@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package ru.demidov.grpc.news;
+import "google/protobuf/empty.proto";
+
+message NewsGrpc {
+    int32 id = 1;
+    string caption = 2;
+    string body = 3;
+    string publicationDate = 4;
+    string category = 5;
+}
+
+message NewsResponse {
+	repeated NewsGrpc items = 1;
+}
+
+service NewsService {
+    rpc get(google.protobuf.Empty) returns (NewsResponse) {}
+}
